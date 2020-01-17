@@ -1,0 +1,97 @@
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    background-color: black;
+    border-radius: 3rem;
+    width: 80%;
+    margin: 1rem auto;
+}
+
+.addPost {
+    display: flex;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 2rem;
+    padding: 2rem;
+    box-shadow: 3px 3px 3px grey;
+}
+
+.addPost input {
+    width: 80%;
+    align-self: center;
+    margin: 1rem;
+}
+
+.addPost button {
+    align-self: center;
+    width: 30%;
+    margin: 1rem;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px grey;
+}
+
+.addPost button:hover {
+    color: black;
+    background-color: white;
+}
+
+.postBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.postCard {
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 2rem;
+    padding: 2rem;
+    width: 350px;
+    height: 150px;
+    box-shadow: 3px 3px 3px grey;
+}
+
+.postCard p {
+    word-wrap: normal;
+    font-size: 0.7rem;
+}
+
+.postCard button {
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px grey;
+}
+
+.postCard button:hover {
+    color: black;
+    background-color: white;
+}
