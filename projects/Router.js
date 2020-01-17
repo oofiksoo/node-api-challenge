@@ -112,7 +112,7 @@ router.put("/:id", validateProjectId, (req, res) => {
     } else {
         db.update(id, data)
 
-        .then(post => {
+        .then(project => {
             if (project) {
                 res.status(200).json(data);
             } else {
