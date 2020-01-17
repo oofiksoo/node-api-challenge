@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
 router.get("/:id", validateProjectId, (req, res) => {
     const id = req.params.id;
 
-    db.getById(id)
+    db.get(id)
 
     .then(project => {
         if (project.length !== 0) {

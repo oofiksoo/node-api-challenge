@@ -1,16 +1,16 @@
-const db = require("../data/dbConfig.js");
+const db = require("../data/helpers/projectModel.js");
 
 function validateProjectId(req, res, next) {
     // do your magic!
     const id = req.params.id;
 
-    db.getById(id)
+    db.get(id)
 
-    .then(post => {
-        if (!post) {
-            res.status(400).json({ message: "Invalid post id." });
+    .then(project => {
+        if (!project) {
+            res.status(400).json({ message: "Invalid project id." });
         } else {
-            req.post = post;
+            req.project = project;
 
             next();
         }
@@ -19,7 +19,7 @@ function validateProjectId(req, res, next) {
     .catch(err => {
         console.log(err);
 
-        res.status(500).json({ message: "Error retrieving post id." });
+        res.status(500).json({ message: "Error retrieving project id." });
     });
 }
 module.exports = validateProjectId;
