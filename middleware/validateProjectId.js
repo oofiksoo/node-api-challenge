@@ -1,3 +1,5 @@
+const db = require("../data/dbConfig.js");
+
 function validateProjectId(req, res, next) {
     // do your magic!
     const id = req.params.id;

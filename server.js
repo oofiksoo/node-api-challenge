@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const ProjectRouter = require("./projects/Router.js");
 const server = express();
-const logger = require("../middleware/Logger.js");
+const logger = require("./middleware/logger");
 server.use(express.json());
 server.use(cors());
 

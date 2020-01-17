@@ -1,4 +1,4 @@
-const db = require("./dbconfig.js.js");
+const db = require("../data/helpers/projectModel");
 const express = require("express");
 const validateProjectId = require("../middleware/validateProjectId.js");
 const router = express.Router();
