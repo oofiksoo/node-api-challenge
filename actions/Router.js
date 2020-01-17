@@ -4,27 +4,14 @@ const router = express.Router();
 const validateProjectId = require("../middleware/validateProjectId.js");
 const validateActionId = require("../middleware/validateActionID.js");
 const validateAction = require("../middleware/validateAction.js");
-router.post("/", validateAction, (req, res) => {
-    db.insert(req.body)
-
-    .then(action => {
-        res.status(201).json(action);
-    })
-
-    .catch(err => {
-        console.log(err);
-
-        res.status(500).json({ message: "Error adding action." });
-    });
-});
 
 router.post("/:id/actions", validateProjectId, validateAction, (req, res) => {
     const newaction = {
         ...req.body,
 
-        project_id: req.project.id,
-        description: req.project.description,
-        notes: req.project.notes
+        project_id: req.body.project_id,
+        description: req.body.description,
+        notes: req.body.notes
     };
 
     db.insert(newaction)
@@ -76,22 +63,6 @@ router.get("/:id", validateActionId, (req, res) => {
         res
             .status(500)
             .json({ error: "The action information could not be retrieved." });
-    });
-});
-
-router.get("/:id/actions", validateProjectId, (req, res) => {
-    db.getprojectActions(req.project.id)
-
-    .then(action => {
-        res.status(200).json(action);
-    })
-
-    .catch(err => {
-        console.log(err);
-
-        res.status(500).json({
-            message: "Error retrieving actions."
-        });
     });
 });
 

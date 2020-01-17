@@ -1,6 +1,7 @@
 const db = require("../data/helpers/projectModel");
 const express = require("express");
 const validateProjectId = require("../middleware/validateProjectId.js");
+const validateAction = require("../middleware/validateAction");
 const router = express.Router();
 
 //get all projects
@@ -81,6 +82,23 @@ router.delete("/:id", validateProjectId, (req, res) => {
         });
     });
 });
+//get project actions
+router.get("/:id/actions", validateProjectId, (req, res) => {
+    db.getProjectActions(req.project.id)
+
+    .then(action => {
+        res.status(200).json(action);
+    })
+
+    .catch(err => {
+        console.log(err);
+
+        res.status(500).json({
+            message: "Error retrieving actions."
+        });
+    });
+});
+
 //update a project
 router.put("/:id", validateProjectId, (req, res) => {
     const id = req.params.id;
@@ -112,6 +130,28 @@ router.put("/:id", validateProjectId, (req, res) => {
             });
         });
     }
+});
+
+router.post("/:id/actions", validateProjectId, validateAction, (req, res) => {
+    const newaction = {
+        ...req.body,
+
+        project_id: req.project.id,
+        description: req.project.description,
+        notes: req.project.notes
+    };
+
+    db.insert(newaction)
+
+    .then(action => {
+        res.status(201).json(action);
+    })
+
+    .catch(err => {
+        console.log(err);
+
+        res.status(500).json({ message: "Error adding action" });
+    });
 });
 
 module.exports = router;

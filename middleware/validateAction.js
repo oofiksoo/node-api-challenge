@@ -4,7 +4,7 @@ function validateAction(req, res, next) {
 
     if (Object.keys(body).length === 0) {
         res.status(400).json({ message: "Missing action data." });
-    } else if (!body.name) {
+    } else if (!body.description || !body.notes || !body.project_id) {
         res.status(400).json({ message: "Missing required action field." });
     } else {
         next();
